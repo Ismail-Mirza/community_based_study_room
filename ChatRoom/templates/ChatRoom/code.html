@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <main class="auth layout">
+      <div class="container taauth">
+        <div class="layout__box">
+          <div class="layout__boxHeader">
+            <div class="layout__boxTitle">
+              <h3>Verify Verification Code</h3>
+            </div>
+          </div>
+          <div class="layout__body">
+            {% include "message.html" %}
+            <form class="form" method="POST" action="">
+              {% csrf_token %}
+              <div class="form__group form__group">
+                <input type="text" name="code" placeholder="Enter Verification Code..">
+              </div>
+              <button class="btn btn--main" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock content %}

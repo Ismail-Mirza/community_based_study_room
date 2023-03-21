@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <main class="auth layout">
+      <div class="container taauth">
+        <div class="layout__box">
+          <div class="layout__boxHeader">
+            <div class="layout__boxTitle">
+              <h3>Contact Us</h3>
+            </div>
+          </div>
+          <div class="layout__body">
+            {% include "message.html" %}
+            <h2 class="auth__tagline">Feel Free to Ask Any Question</h2>
+
+            <form class="form" method="POST" action="">
+              {% csrf_token %}
+              <div class="form__group form__group">
+                <label for="room_name">Name</label>
+                {{form.name}}
+              </div>
+              <div class="form__group form__group">
+                <label for="room_name">Email</label>
+                {{form.email}}
+              </div>
+              <div class="form__group form__group">
+                <label for="room_name">Messages</label>
+                {{form.body}}
+              </div>
+             
+
+              <button class="btn btn--main" type="submit">
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <main class="create-room layout">
+    <div class="container taauth">
+      <div class="layout__box">
+        <div class="layout__boxHeader">
+          <div class="layout__boxTitle">
+            <a href="{{request.META.HTTP_REFERER}}">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path
+                  d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                </path>
+              </svg>
+            </a>
+            <h3>Create/Update Tutorial</h3>
+          </div>
+        </div>
+        <div class="layout__body">
+          <form class="form" method="POST">
+            {% csrf_token %}
+            <div class="form__group">
+              <label for="room_name">Post Title</label>
+              {{form.title}}
+            </div>
+            <div class="form__group">
+              <label for="post_topic">Enter a Topic</label>
+              <input required value="{{post.topic}}" type="text" name="topic" id="post_topic" list="topic-list" />
+              <datalist id="topic-list">
+                <select id="post_topic">
+                  {% for topic in topics %}
+                    <option value="{{topic.name}}">{{topic.name}}</option>
+                  {% endfor %}
+                </select>
+              </datalist>
+            </div>
+        
+            <div class="form__group">
+              <label for="post_content">Content</label>
+              {{form.content}}
+            </div>
+            <div class="form__group">
+              <label for="post_cover_img">Image Id</label>
+              {{form.cover_img_id}}
+            </div>
+            <div class="form__group">
+              <label for="post_video">Video ID:</label>
+              {{form.video}}
+            </div>
+  
+            <div class="form__action">
+              <a class="btn btn--dark" href="{{request.META.HTTP_REFERER }}">Cancel</a>
+              <button class="btn btn--main" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

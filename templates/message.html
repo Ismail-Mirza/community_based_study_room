@@ -1,0 +1,22 @@
+{% if messages %}
+    
+        {% for message in messages %}
+            {% if message.tags ==  "error" %}
+                    <div class="oaerror danger">
+                        <strong>Error</strong>- {{message}}
+                    </div>
+            {% elif message.tags == "warning" %}
+                    <div class="oaerror warning">
+                        <strong>Error</strong> - {{message}}
+                    </div> 
+            {% elif message.tags == "info" %}
+                    <div class="oaerror info">
+                        <strong>Error</strong> - {{message}}
+                    </div>
+            {% elif message.tags == "success" %}
+                    <div class="oaerror success">
+                        <strong>Success!</strong> - {{ message }}
+                    </div>
+            {% endif %}
+        {% endfor %}
+{% endif %}
